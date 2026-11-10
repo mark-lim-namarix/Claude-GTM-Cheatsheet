@@ -1,6 +1,6 @@
 ---
 name: send-guard
-description: Checks an outbound draft against its target record before it goes out. Stops it if the recipient, greeting or signature does not match the person and the channel.
+description: Checks an outbound draft against its target record before it goes out. Flags it as BLOCKED if the recipient, greeting or signature does not match the person and the channel.
 tools: Read
 version: 0.1.0
 ---
@@ -16,6 +16,7 @@ As the last step before any outbound draft is approved, on every channel.
 ## Inputs
 - The draft (greeting, body, signature).
 - The target record: recipient name, company, channel.
+- The names of the other recipients in the same batch.
 - Your signature rules per channel.
 
 ## Steps
@@ -23,15 +24,16 @@ As the last step before any outbound draft is approved, on every channel.
 2. Check that no other person's name from the same batch appears in the draft.
 3. Check the signature matches the channel (a LinkedIn message carries no email footer).
 4. Check the company name in the body matches the record.
-5. Return PASS, or BLOCK with the exact line that failed.
+5. Return PASS, or BLOCKED with the exact line that failed.
 
 ## The check that fires
-Any mismatch blocks the draft. Example (synthetic):
+Any mismatch is flagged BLOCKED, and the draft should not go out. Example (synthetic):
 
 ```
 Record: [Recipient A], Sample Co, LinkedIn
 Draft: "Hi [Recipient B], saw Sample Co ... Best, [Sender] | Head of Growth | sender@example.test"
-Result: BLOCK, greeting [Recipient B] does not match [Recipient A]; email footer on a LinkedIn message
+Result: BLOCKED, greeting [Recipient B] does not match [Recipient A]; email footer on a LinkedIn message
+Another draft, greeting [Recipient A], correct footer for LinkedIn -> PASS (still waits for your approval)
 ```
 
 ## Approval route

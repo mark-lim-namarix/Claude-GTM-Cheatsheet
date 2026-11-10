@@ -1,6 +1,6 @@
 # Agent database: work with AI without being an AI expert
 
-A free database of agents for Claude Code. Each agent encodes a checklist for its field, so you can check AI work against a clear checklist without a deep understanding of how AI works. Topics so far include: how to make AI understand you, AI judging AI, keeping up with new models, handoffs between agents, rules and guardrails, product and engineering, and go-to-market. More topics follow.
+A free database of agents for Claude Code. Each agent encodes a checklist for its field, so you can check AI work against a clear checklist without a deep understanding of how AI works. Topics so far include: how to make AI understand you, AI judging AI, AI-made test sets, keeping up with new models, handoffs between agents, rules and guardrails, product and engineering, and go-to-market. More topics follow.
 
 ## Install
 
@@ -34,22 +34,36 @@ Let an AI judge another AI's work against a rubric you wrote, so you label less 
 | [writer-judge-alignment-check](ai-judges-ai/writer-judge-alignment-check.md) | Finds where the writer's instructions and the judge's questions differ | `cp ai-judges-ai/writer-judge-alignment-check.md ~/.claude/agents/` |
 | [three-judge-check](ai-judges-ai/three-judge-check.md) | Compares three judges' scores and points to the one to fix | `cp ai-judges-ai/three-judge-check.md ~/.claude/agents/` |
 
+## AI-made test sets
+
+Test your prompts and agents without labelling everything yourself. Real items are labelled only from recorded outcomes you supply, and any label that came from the model being tested is left out. A few made-up bad cases are added and marked AUTHORED.
+
+| Agent | What it does | Install |
+|---|---|---|
+| [test-set-maker](ai-made-test-sets/test-set-maker.md) | Proposes a test set whose labels come from recorded outcomes, and leaves out labels that came from the model under test | `cp ai-made-test-sets/test-set-maker.md ~/.claude/agents/` |
+| [both-directions-check](ai-made-test-sets/both-directions-check.md) | Checks a test passes good inputs and fails bad ones, to catch a test that passes by luck | `cp ai-made-test-sets/both-directions-check.md ~/.claude/agents/` |
+| [mock-drift-check](ai-made-test-sets/mock-drift-check.md) | Compares a fake copy of an outside service with a real sample and lists what changed | `cp ai-made-test-sets/mock-drift-check.md ~/.claude/agents/` |
+
 ## Keeping up with new models
 
-Compare models fairly and keep the bill under control.
+Compare models fairly and watch the bill.
 
 | Agent | What it does | Install |
 |---|---|---|
 | [model-ab-scorer](keeping-up-with-models/model-ab-scorer.md) | Compares two models or prompts on the same cases, or says there is too little data | `cp keeping-up-with-models/model-ab-scorer.md ~/.claude/agents/` |
 | [cost-brake](keeping-up-with-models/cost-brake.md) | Compares usage with your caps and reports STOP at 95 percent | `cp keeping-up-with-models/cost-brake.md ~/.claude/agents/` |
+| [model-pin-check](keeping-up-with-models/model-pin-check.md) | Flags model names that are an alias or an unlisted name instead of an exact version, fallbacks included | `cp keeping-up-with-models/model-pin-check.md ~/.claude/agents/` |
+| [new-model-rerun](keeping-up-with-models/new-model-rerun.md) | Applies your switch rule to old and new results and says KEEP, SWITCH, INCONCLUSIVE or NOT COMPARABLE, and flags a rule written after the results | `cp keeping-up-with-models/new-model-rerun.md ~/.claude/agents/` |
 
 ## Handoffs between agents
 
-Make sure what one agent was told is what the next one acts on.
+Check that what one agent was told is what the next one acts on.
 
 | Agent | What it does | Install |
 |---|---|---|
 | [relay-receipts](handoffs-between-agents/relay-receipts.md) | Checks an instruction reached everyone who needs it | `cp handoffs-between-agents/relay-receipts.md ~/.claude/agents/` |
+| [worker-brief-builder](handoffs-between-agents/worker-brief-builder.md) | Drafts a complete brief for another agent and says NOT READY when a part is missing | `cp handoffs-between-agents/worker-brief-builder.md ~/.claude/agents/` |
+| [worker-report-check](handoffs-between-agents/worker-report-check.md) | Checks a worker's report for missing parts and claims with no output behind them | `cp handoffs-between-agents/worker-report-check.md ~/.claude/agents/` |
 
 ## Rules and guardrails
 
@@ -80,7 +94,7 @@ The first topic: outbound work, replies and results.
 |---|---|---|
 | [source-backed-opener](go-to-market/source-backed-opener.md) | Drafts a cold-email opener only from a real article, or holds the lead | `cp go-to-market/source-backed-opener.md ~/.claude/agents/` |
 | [send-guard](go-to-market/send-guard.md) | Flags a draft with the wrong recipient, greeting or signature as BLOCKED | `cp go-to-market/send-guard.md ~/.claude/agents/` |
-| [reply-desk](go-to-market/reply-desk.md) | Sorts replies, drafts answers for you to approve, labels a clear no as STOP and drafts nothing | `cp go-to-market/reply-desk.md ~/.claude/agents/` |
+| [reply-desk](go-to-market/reply-desk.md) | Sorts replies, drafts answers for you to approve, flags a clear no as STOP and drafts nothing | `cp go-to-market/reply-desk.md ~/.claude/agents/` |
 | [signal-to-approval-router](go-to-market/signal-to-approval-router.md) | Turns a buying signal into a message you approve or edit | `cp go-to-market/signal-to-approval-router.md ~/.claude/agents/` |
 | [closed-loop-scorecard](go-to-market/closed-loop-scorecard.md) | Compares results against a control group so you learn what works | `cp go-to-market/closed-loop-scorecard.md ~/.claude/agents/` |
 | [fake-quote-check](go-to-market/fake-quote-check.md) | Checks every quote in a draft against the source text | `cp go-to-market/fake-quote-check.md ~/.claude/agents/` |
@@ -116,6 +130,7 @@ MIT. Provided as is, with no warranty or support. Check each card's `tools:` lin
 
 ## Changelog
 
+- 0.6.0: Added ai-made-test-sets (3), model-pin-check, new-model-rerun, worker-brief-builder, worker-report-check; send-guard and reply-desk descriptions now say "flags".
 - 0.5.0: Folders renamed by the problem they solve; added make-ai-understand-you (3 new) and ai-judges-ai (3 new, plus judge-before-send renamed judge-before-ship).
 - 0.4.0: Six agents on rules and checks.
 - 0.3.0: Three agents on keeping work in order.

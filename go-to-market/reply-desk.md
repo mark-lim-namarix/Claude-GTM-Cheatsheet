@@ -1,6 +1,6 @@
 ---
 name: reply-desk
-description: Sorts incoming replies to outbound messages, drafts an answer for the ones that need one, and stops on a clear no. It never sends anything itself.
+description: Sorts incoming replies to outbound messages, drafts an answer for the ones that need one, and flags a clear no as STOP without drafting an answer. It never sends anything itself.
 tools: Read
 version: 0.1.0
 ---
@@ -26,12 +26,17 @@ Daily, over new replies from every outbound channel.
 5. For every no, tell you to add the person to your do-not-contact list and close the thread. You apply it; the agent cannot change your lists.
 
 ## The check that fires
-A clear no ends the thread. No draft, no follow-up, and the person is added to the do-not-contact list. Example (synthetic):
+A clear no gets no draft and no follow-up, and the agent tells you to add the person to your do-not-contact list and close the thread. If unsure between not now and no, label it no (STOP). Example (synthetic):
 
 ```
 Reply: "Please remove me from your list."
 Class: no
 Result: STOP, no draft written; action for you: add to do-not-contact and close the thread
+Reply: "Not this quarter, try me in January." Class: not now -> follow-up proposed for early January, wording drafted for you to approve
+Reply: "Yes, tell me more." Class: interested -> short answer drafted from your answers file
+Reply: "How much does it cost?" Class: question -> short answer drafted from your answers file
+Reply: "Out until the 3rd." Class: out of office -> follow-up suggested after the 3rd
+Reply: "I'm not the right person." Class: wrong person -> no draft written; it is not STOP, you may ask for the right contact
 ```
 
 ## Approval route
