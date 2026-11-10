@@ -1,6 +1,6 @@
 # Outbound team: a free agent database for GTM agencies and B2B teams
 
-A department-structured agent database for Claude Code. The first department is the **Outbound team** (six agents you install one at a time); **Quality and measurement** (four) and **Operating system** (three) follow. Every agent carries a check that fires, an approval step before anything leaves your hands, and an outcome you measure. Review everything before it goes out.
+A department-structured agent database for Claude Code. The first department is the **Outbound team** (six agents you install one at a time); **Quality and measurement** (four), **Operating system** (three) and **Working with AI** (six) follow. Every agent carries a check that fires, an approval step before anything leaves your hands, and an outcome you measure. Review everything before it goes out.
 
 ## The Outbound team
 
@@ -36,6 +36,19 @@ Three agents that keep the work itself in order. Install one at a time.
 | [Score before build](operating-system/score-before-build.md) | Scores a proposed task on need, ease and outcome and recommends parking the low scorers | `mkdir -p ~/.claude/agents && cp operating-system/score-before-build.md ~/.claude/agents/` |
 | [Auto-reply filter](operating-system/auto-reply-filter.md) | Labels machine-sent messages so you can keep them out of your reply queue, never real questions | `mkdir -p ~/.claude/agents && cp operating-system/auto-reply-filter.md ~/.claude/agents/` |
 
+## Working with AI: rules and guardrails
+
+Six agents that carry the rules we use to work with AI every day: who checks the work, what counts as done, and when a human decides. Install one at a time.
+
+| Agent | What it does | Install |
+|---|---|---|
+| [Fresh-eyes reviewer](working-with-ai/fresh-eyes-reviewer.md) | Reviews work from the work and your criteria alone, never the author's reasoning | `mkdir -p ~/.claude/agents && cp working-with-ai/fresh-eyes-reviewer.md ~/.claude/agents/` |
+| [Release gate](working-with-ai/release-gate.md) | Labels each item SENDABLE or BLOCKED before anything for an outside reader goes out | `mkdir -p ~/.claude/agents && cp working-with-ai/release-gate.md ~/.claude/agents/` |
+| [Defect triage](working-with-ai/defect-triage.md) | Turns a list of problems into fix-now, your decision and your action | `mkdir -p ~/.claude/agents && cp working-with-ai/defect-triage.md ~/.claude/agents/` |
+| [Done-claim check](working-with-ai/done-claim-check.md) | Marks each "done" claim VERIFIED or UNVERIFIED against pasted evidence | `mkdir -p ~/.claude/agents && cp working-with-ai/done-claim-check.md ~/.claude/agents/` |
+| [Fail-closed check](working-with-ai/fail-closed-check.md) | Treats anything skipped or not run as a failure, never a pass | `mkdir -p ~/.claude/agents && cp working-with-ai/fail-closed-check.md ~/.claude/agents/` |
+| [Decision batcher](working-with-ai/decision-batcher.md) | Writes your real decisions as one batch, with a recommendation | `mkdir -p ~/.claude/agents && cp working-with-ai/decision-batcher.md ~/.claude/agents/` |
+
 ## What most free packs miss
 
 Prompts and role descriptions are easy to find. These agents add three things:
@@ -62,10 +75,11 @@ Built on ideas and open work from the community, with thanks. Credit is not endo
 
 ## License and limits
 
-MIT. Provided as is, with no warranty or support. Agents can read the web and run commands in your project, so read an agent file before you install it. The examples are synthetic.
+MIT. Provided as is, with no warranty or support. Check each card's `tools:` line before you install it: some agents here only read, but anything that lists more can act on your project. The examples are synthetic.
 
 ## Changelog
 
+- 0.4.0: Working with AI, six agents.
 - 0.3.0: Operating system, three agents.
 - 0.2.0: Quality and measurement, four agents.
 - 0.1.0: Outbound team, six agents.
