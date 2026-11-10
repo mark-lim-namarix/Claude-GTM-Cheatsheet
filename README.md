@@ -1,6 +1,6 @@
 # Outbound team: a free agent database for GTM agencies and B2B teams
 
-A department-structured agent database for Claude Code. Release 1 is one full department, the **Outbound team**: six agents you install one at a time. Every agent carries a check that fires, an approval step before anything leaves your hands, and an outcome you measure. Review everything before it goes out.
+A department-structured agent database for Claude Code. The first department is the **Outbound team** (six agents you install one at a time); **Quality and measurement** follows with four more. Every agent carries a check that fires, an approval step before anything leaves your hands, and an outcome you measure. Review everything before it goes out.
 
 ## The Outbound team
 
@@ -14,6 +14,17 @@ A department-structured agent database for Claude Code. Release 1 is one full de
 | [Signal-to-approval router](outbound-team/signal-to-approval-router.md) | Turns a buying signal into a message you approve or edit | `mkdir -p ~/.claude/agents && cp outbound-team/signal-to-approval-router.md ~/.claude/agents/` |
 
 One line per agent: copy the file into `~/.claude/agents/` (create the folder if needed), then ask Claude Code to use it by name. Install one, or all six: `mkdir -p ~/.claude/agents && cp outbound-team/*.md ~/.claude/agents/`.
+
+## Quality and measurement
+
+Four agents that check your work and your spend. Install one at a time.
+
+| Agent | What it does | Install |
+|---|---|---|
+| [Model A/B scorer](quality-and-measurement/model-ab-scorer.md) | Compares two models or prompts on the same cases and says which is better, or that there is too little data | `mkdir -p ~/.claude/agents && cp quality-and-measurement/model-ab-scorer.md ~/.claude/agents/` |
+| [Cost brake](quality-and-measurement/cost-brake.md) | Compares usage with your caps and says STOP at 95 percent | `mkdir -p ~/.claude/agents && cp quality-and-measurement/cost-brake.md ~/.claude/agents/` |
+| [Relay receipts](quality-and-measurement/relay-receipts.md) | Checks an instruction reached everyone who needs it | `mkdir -p ~/.claude/agents && cp quality-and-measurement/relay-receipts.md ~/.claude/agents/` |
+| [Fake-quote check](quality-and-measurement/fake-quote-check.md) | Checks every quote in a draft against the source text | `mkdir -p ~/.claude/agents && cp quality-and-measurement/fake-quote-check.md ~/.claude/agents/` |
 
 ## What most free packs miss
 
@@ -36,6 +47,7 @@ Built on ideas and open work from the community, with thanks. Credit is not endo
 - [ColdIQ GTM Skills](https://github.com/sachacoldiq/ColdIQ-s-GTM-Skills)
 - [Extruct GTM Skills](https://github.com/extruct-ai/gtm-skills)
 - [Anthropic Skills](https://github.com/anthropics/skills)
+- [Demystifying evals for AI agents (Anthropic)](https://www.anthropic.com/research/demystifying-evals-for-ai-agents)
 
 ## License and limits
 
@@ -43,4 +55,5 @@ MIT. Provided as is, with no warranty or support. Agents can read the web and ru
 
 ## Changelog
 
+- 0.2.0: Quality and measurement, four agents.
 - 0.1.0: Outbound team, six agents.
