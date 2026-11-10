@@ -77,6 +77,21 @@ The rules for how work is checked, accepted and released.
 | [done-claim-check](rules-and-guardrails/done-claim-check.md) | Marks each "done" claim VERIFIED, UNVERIFIED or CONTRADICTED against pasted evidence | `cp rules-and-guardrails/done-claim-check.md ~/.claude/agents/` |
 | [fail-closed-check](rules-and-guardrails/fail-closed-check.md) | Treats anything skipped or not run as a failure, never a pass | `cp rules-and-guardrails/fail-closed-check.md ~/.claude/agents/` |
 
+Copy-paste rules for your `CLAUDE.md` (not agents; paste the text in the box):
+
+| Rule | What it does |
+|---|---|
+| [fix-never-report](rules-and-guardrails/rules/fix-never-report.md) | Fix and check a problem; only real decisions and owner-only steps come back to you |
+| [claim-is-not-evidence](rules-and-guardrails/rules/claim-is-not-evidence.md) | A "done" statement needs evidence next to it, or it is marked UNVERIFIED |
+| [reproduce-before-report](rules-and-guardrails/rules/reproduce-before-report.md) | A finding is reproduced against the real code or data before it is reported |
+
+Hook patterns (small scripts you copy and test first; see [the hooks guide](rules-and-guardrails/hooks/README.md)):
+
+| Hook | What it does |
+|---|---|
+| [stop-gate](rules-and-guardrails/hooks/stop-gate.py) | A Stop hook that keeps Claude working while your check command fails; fails closed |
+| [secret-scan-before-commit](rules-and-guardrails/hooks/secret-scan-before-commit.sh) | A git pre-commit hook that refuses a commit adding a secret-shaped line |
+
 ## Product and engineering
 
 Decide what to build, and keep the shared facts current.
@@ -85,6 +100,10 @@ Decide what to build, and keep the shared facts current.
 |---|---|---|
 | [score-before-build](product-and-engineering/score-before-build.md) | Scores a task on need, ease and outcome and recommends parking the low scorers | `cp product-and-engineering/score-before-build.md ~/.claude/agents/` |
 | [company-brain](product-and-engineering/company-brain.md) | Checks the shared facts your agents rely on exist and are current before a task starts | `cp product-and-engineering/company-brain.md ~/.claude/agents/` |
+| [spec-to-acceptance-tests](product-and-engineering/spec-to-acceptance-tests.md) | Turns a feature description into numbered acceptance tests and flags what cannot be checked | `cp product-and-engineering/spec-to-acceptance-tests.md ~/.claude/agents/` |
+| [code-review-brief](product-and-engineering/code-review-brief.md) | Builds the brief for an independent code review from the change and your criteria only | `cp product-and-engineering/code-review-brief.md ~/.claude/agents/` |
+| [release-readiness-check](product-and-engineering/release-readiness-check.md) | Marks a release READY only if every checklist item has proof | `cp product-and-engineering/release-readiness-check.md ~/.claude/agents/` |
+| [rules-file-check](product-and-engineering/rules-file-check.md) | Flags conflicting, repeated, vague or stale rules in your CLAUDE.md | `cp product-and-engineering/rules-file-check.md ~/.claude/agents/` |
 
 ## Go-to-market
 
@@ -126,10 +145,11 @@ Built on ideas and open work from the community, with thanks. Credit is not endo
 
 ## License and limits
 
-MIT. Provided as is, with no warranty or support. Check each card's `tools:` line before you install it: most agents here only read, but anything that lists more can act on your project. The examples are synthetic.
+MIT. Provided as is, with no warranty or support. Check each card's `tools:` line before you install it: most agents here only read, but anything that lists more can act on your project. The hook scripts run on your machine, so read them and test them first. The examples are synthetic.
 
 ## Changelog
 
+- 0.7.0: Added three copy-paste rules and two hook patterns to rules-and-guardrails; spec-to-acceptance-tests, code-review-brief, release-readiness-check and rules-file-check to product-and-engineering.
 - 0.6.0: Added ai-made-test-sets (3), model-pin-check, new-model-rerun, worker-brief-builder, worker-report-check; send-guard and reply-desk descriptions now say "flags".
 - 0.5.0: Folders renamed by the problem they solve; added make-ai-understand-you (3 new) and ai-judges-ai (3 new, plus judge-before-send renamed judge-before-ship).
 - 0.4.0: Six agents on rules and checks.
