@@ -1,6 +1,6 @@
 # Outbound team: a free agent database for GTM agencies and B2B teams
 
-A department-structured agent database for Claude Code. The first department is the **Outbound team** (six agents you install one at a time); **Quality and measurement** follows with four more. Every agent carries a check that fires, an approval step before anything leaves your hands, and an outcome you measure. Review everything before it goes out.
+A department-structured agent database for Claude Code. The first department is the **Outbound team** (six agents you install one at a time); **Quality and measurement** (four) and **Operating system** (three) follow. Every agent carries a check that fires, an approval step before anything leaves your hands, and an outcome you measure. Review everything before it goes out.
 
 ## The Outbound team
 
@@ -13,7 +13,7 @@ A department-structured agent database for Claude Code. The first department is 
 | [Closed-loop scorecard](outbound-team/closed-loop-scorecard.md) | Compares results against a control group so you learn what works | `mkdir -p ~/.claude/agents && cp outbound-team/closed-loop-scorecard.md ~/.claude/agents/` |
 | [Signal-to-approval router](outbound-team/signal-to-approval-router.md) | Turns a buying signal into a message you approve or edit | `mkdir -p ~/.claude/agents && cp outbound-team/signal-to-approval-router.md ~/.claude/agents/` |
 
-One line per agent: copy the file into `~/.claude/agents/` (create the folder if needed), then ask Claude Code to use it by name. Install one, or all six: `mkdir -p ~/.claude/agents && cp outbound-team/*.md ~/.claude/agents/`.
+One line per agent (run from the repo folder): copy the file into `~/.claude/agents/` (create the folder if needed), then ask Claude Code to use it by name. Install one, or all six: `mkdir -p ~/.claude/agents && cp outbound-team/*.md ~/.claude/agents/`.
 
 ## Quality and measurement
 
@@ -25,6 +25,16 @@ Four agents that check your work and your spend. Install one at a time.
 | [Cost brake](quality-and-measurement/cost-brake.md) | Compares usage with your caps and says STOP at 95 percent | `mkdir -p ~/.claude/agents && cp quality-and-measurement/cost-brake.md ~/.claude/agents/` |
 | [Relay receipts](quality-and-measurement/relay-receipts.md) | Checks an instruction reached everyone who needs it | `mkdir -p ~/.claude/agents && cp quality-and-measurement/relay-receipts.md ~/.claude/agents/` |
 | [Fake-quote check](quality-and-measurement/fake-quote-check.md) | Checks every quote in a draft against the source text | `mkdir -p ~/.claude/agents && cp quality-and-measurement/fake-quote-check.md ~/.claude/agents/` |
+
+## Operating system
+
+Three agents that keep the work itself in order. Install one at a time.
+
+| Agent | What it does | Install |
+|---|---|---|
+| [Company brain](operating-system/company-brain.md) | Checks the shared facts your agents rely on exist and are current before a task starts | `mkdir -p ~/.claude/agents && cp operating-system/company-brain.md ~/.claude/agents/` |
+| [Score before build](operating-system/score-before-build.md) | Scores a proposed task on need, ease and outcome and recommends parking the low scorers | `mkdir -p ~/.claude/agents && cp operating-system/score-before-build.md ~/.claude/agents/` |
+| [Auto-reply filter](operating-system/auto-reply-filter.md) | Labels machine-sent messages so you can keep them out of your reply queue, never real questions | `mkdir -p ~/.claude/agents && cp operating-system/auto-reply-filter.md ~/.claude/agents/` |
 
 ## What most free packs miss
 
@@ -47,6 +57,7 @@ Built on ideas and open work from the community, with thanks. Credit is not endo
 - [ColdIQ GTM Skills](https://github.com/sachacoldiq/ColdIQ-s-GTM-Skills)
 - [Extruct GTM Skills](https://github.com/extruct-ai/gtm-skills)
 - [Anthropic Skills](https://github.com/anthropics/skills)
+- [RICE prioritization (Intercom)](https://www.intercom.com/blog/rice-simple-prioritization-for-product-managers)
 - [Demystifying evals for AI agents (Anthropic)](https://www.anthropic.com/research/demystifying-evals-for-ai-agents)
 
 ## License and limits
@@ -55,5 +66,6 @@ MIT. Provided as is, with no warranty or support. Agents can read the web and ru
 
 ## Changelog
 
+- 0.3.0: Operating system, three agents.
 - 0.2.0: Quality and measurement, four agents.
 - 0.1.0: Outbound team, six agents.
