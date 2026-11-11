@@ -1,5 +1,9 @@
 # Agent database: work with AI without being an AI expert
 
+<p align="center">
+  <img src="assets/readme-hero.gif" width="480" alt="Agent database: work with AI without being an AI expert. 36 agents in 8 topics, plus 3 rules and 2 hooks. Free, MIT license, for Claude Code. Topics: Make AI understand you (4 agents), AI judges AI (4), AI-made test sets (3), Keeping up with new models (4), Handoffs between agents (3), Rules and guardrails (5, plus 3 rules and 2 hooks), Product and engineering (6), Go-to-market (7). An orange highlight steps through each topic. Founder photo, bottom left. Copy an agent into ~/.claude/agents/">
+</p>
+
 A free database of agents for Claude Code. Each agent encodes a checklist for its field, so you can check AI work against a clear checklist without a deep understanding of how AI works. Topics so far include: how to make AI understand you, AI judging AI, AI-made test sets, keeping up with new models, handoffs between agents, rules and guardrails, product and engineering, and go-to-market. More topics follow.
 
 ## Install
